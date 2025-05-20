@@ -8,7 +8,6 @@
   "publish": {
     "include": [
       "mod.js",
-      "mod.d.ts",
       "data/derived/general-conference-leadership.json",
       "README.md"
     ]
