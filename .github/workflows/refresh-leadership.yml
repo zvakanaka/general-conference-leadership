@@ -23,6 +23,12 @@ jobs:
       - name: Run derive task
         run: deno task derive
 
+      - name: Run clean-names task
+        run: deno task clean-names
+      
+      - name: Run remove-duplicates task
+        run: deno task remove-duplicates
+
       - name: Remove raw JSON data
         run: rm -f data/first_presidency.json data/quorum_of_12.json
 

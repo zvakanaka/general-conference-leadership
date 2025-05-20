@@ -1,6 +1,6 @@
 {
   "name": "@zvakanaka/general-conference-leadership",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "exports": {
     ".": "./mod.ts"
   },
@@ -14,6 +14,8 @@
   "tasks": {
     "refresh": "deno run --allow-net=en.wikipedia.org --allow-write=./data src/refresh.js",
     "derive": "deno run --allow-read=./data --allow-write=./data src/derive.js",
+    "clean-names": "deno run --allow-read=./data --allow-write=./data ./src/clean-names.ts",
+    "remove-duplicates": "deno run --allow-read=./data --allow-write=./data ./src/remove-duplicates.ts",
     "test": "deno test test.js"
   }
 }
