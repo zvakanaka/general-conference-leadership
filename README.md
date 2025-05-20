@@ -12,10 +12,10 @@ Data of names of members of the First Presidency and Quorum of the 12 Apostles d
 
 You can import the JSON data in your Deno project:
 
-```ts
+```js
 import leadership from "jsr:@zvakanaka/general-conference-leadership"
 
-console.log(leadership);
+console.log(leadership)
 ```
 
 ### Refreshing Data
