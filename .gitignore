@@ -1,0 +1,9 @@
+# Ignore LDS chronology data files (these are not needed in final output)
+/data/first_presidency.json
+/data/quorum_of_12.json
+
+# System files
+.DS_Store
+
+# VSCode
+.vscode/

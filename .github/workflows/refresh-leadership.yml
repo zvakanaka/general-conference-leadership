@@ -1,0 +1,55 @@
+name: Refresh LDS Leadership Data
+
+on:
+  schedule:
+    - cron: '0 8 15 4,10 *' # 8:00 UTC on April 15 and October 15
+  workflow_dispatch:
+
+jobs:
+  refresh-leadership:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Run refresh task
+        run: deno task refresh
+
+      - name: Run derive task
+        run: deno task derive
+
+      - name: Remove raw JSON data
+        run: rm -f data/first_presidency.json data/quorum_of_12.json
+
+      - name: Commit derived leadership data and version
+        run: |
+          # Bump deno.json version (semver patch)
+          VERSION=$(jq -r '.version' deno.json)
+          if [[ "$VERSION" =~ ^([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then
+            MAJOR=${BASH_REMATCH[1]}
+            MINOR=${BASH_REMATCH[2]}
+            PATCH=${BASH_REMATCH[3]}
+            PATCH=$((PATCH+1))
+            NEW_VERSION="$MAJOR.$MINOR.$PATCH"
+            jq ".version = \"$NEW_VERSION\"" deno.json > deno.json.tmp && mv deno.json.tmp deno.json
+          else
+            echo "0.0.1" > deno.json.tmp && mv deno.json.tmp deno.json
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/derived/general-conference-leadership.json deno.json
+          git commit -m "chore: update derived leadership data and bump version [auto]" || echo "No changes to commit"
+          git push origin main
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # The OIDC ID token is used for authentication with JSR.
+    steps:
+      - uses: actions/checkout@v4
+      - run: npx jsr publish

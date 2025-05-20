@@ -1,0 +1,18 @@
+{
+  "name": "@zvakanaka/general-conference-leadership",
+  "version": "0.0.0",
+  "exports": {
+    ".": "./mod.js"
+  },
+  "publish": {
+    "include": [
+      "mod.js",
+      "data/derived/general-conference-leadership.json",
+      "README.md"
+    ]
+  },
+  "tasks": {
+    "refresh": "deno run --allow-net=en.wikipedia.org --allow-write=./data src/refresh.js",
+    "derive": "deno run --allow-read=./data --allow-write=./data src/derive.js"
+  }
+}
