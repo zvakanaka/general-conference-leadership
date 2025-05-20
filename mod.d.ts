@@ -9,6 +9,8 @@ export interface GeneralConferenceLeadership {
 }
 
 /**
- * The derived General Conference leadership data.
+ * The default export is an array of GeneralConferenceLeadership objects,
+ * representing the leadership at each General Conference since April 1971.
  */
-export declare const generalConferenceLeadership: GeneralConferenceLeadership[];
+declare const generalConferenceLeadership: GeneralConferenceLeadership[];
+export default generalConferenceLeadership;
