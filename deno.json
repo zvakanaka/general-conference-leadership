@@ -1,13 +1,12 @@
 {
   "name": "@zvakanaka/general-conference-leadership",
-  "version": "0.0.2",
-  "types": "./mod.d.ts",
+  "version": "0.0.3",
   "exports": {
-    ".": "./mod.js"
+    ".": "./mod.ts"
   },
   "publish": {
     "include": [
-      "mod.js",
+      "mod.ts",
       "data/derived/general-conference-leadership.json",
       "README.md"
     ]
