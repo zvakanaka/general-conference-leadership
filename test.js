@@ -1,4 +1,4 @@
-import leadership from "./general-conference-leadership.json" with { type: "json" };
+import leadership from "./data/derived/general-conference-leadership.json" with { type: "json" };
 
 Deno.test("general-conference-leadership.json has the expected format", () => {
   for (const item of leadership) {
@@ -15,3 +15,4 @@ Deno.test("general-conference-leadership.json has the expected format", () => {
     }
   }
 });
+

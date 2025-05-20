@@ -13,6 +13,7 @@
   },
   "tasks": {
     "refresh": "deno run --allow-net=en.wikipedia.org --allow-write=./data src/refresh.js",
-    "derive": "deno run --allow-read=./data --allow-write=./data src/derive.js"
+    "derive": "deno run --allow-read=./data --allow-write=./data src/derive.js",
+    "test": "deno test test.js"
   }
 }
