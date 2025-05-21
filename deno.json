@@ -7,6 +7,7 @@
   "publish": {
     "include": [
       "mod.ts",
+      "types.d.ts",
       "data/derived/general-conference-leadership.json",
       "README.md"
     ]
