@@ -54,11 +54,3 @@ jobs:
           git add data/derived/general-conference-leadership.json deno.json
           git commit -m "chore: update derived leadership data and bump version [auto]" || echo "No changes to commit"
           git push origin main
-  publish:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write # The OIDC ID token is used for authentication with JSR.
-    steps:
-      - uses: actions/checkout@v4
-      - run: npx jsr publish
