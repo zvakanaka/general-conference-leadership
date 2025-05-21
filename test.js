@@ -15,4 +15,3 @@ Deno.test("general-conference-leadership.json has the expected format", () => {
     }
   }
 });
-
