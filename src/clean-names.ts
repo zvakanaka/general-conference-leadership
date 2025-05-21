@@ -4,6 +4,12 @@ const path = "./data/derived/general-conference-leadership.json";
 const raw = await Deno.readTextFile(path);
 const data = JSON.parse(raw);
 
+/**
+ * This function cleans the name by removing any suffixes that are not part of the name.
+ * 
+ * @param {string} name - The name to clean.
+ * @returns {string} - The cleaned name.
+ */
 function cleanName(name: string): string {
   return name
     .replace(/\s*\(.*$/, "")

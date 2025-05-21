@@ -14,6 +14,13 @@ const urls = [
   },
 ];
 
+/**
+ * Fetches a Wikipedia page, parses the specified table, and returns its data as an array of objects.
+ *
+ * @param {string} url - The URL of the Wikipedia page to fetch.
+ * @param {number} tableIndex - The index of the table to parse on the page.
+ * @returns {Promise<Object[]>} An array of objects representing the table rows, with keys from the table headers.
+ */
 async function fetchAndParse(url, tableIndex) {
   const res = await fetch(url);
   const html = await res.text();

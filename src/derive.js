@@ -7,6 +7,15 @@ const startYear = 1971;
 const now = new Date();
 const conferences = [];
 
+/**
+ * Get the dates of General Conferences from the start year to the end year.
+ * The conferences are held in April and October.
+ * The function returns an array of objects with the year, month, and label.
+ * 
+ * @param {number} startYear - The starting year for the conferences.
+ * @param {number} endYear - The ending year for the conferences.
+ * @returns {Array} An array of objects with the year, month, and label.
+ */
 function getConferenceDates(startYear, endYear) {
   const dates = [];
   for (let year = startYear; year <= endYear; year++) {
@@ -21,6 +30,12 @@ function getConferenceDates(startYear, endYear) {
   });
 }
 
+/**
+ * Try to parse a date string in various formats.
+ *
+ * @param {string} str - The date string to parse.
+ * @returns {Date|null} A Date object if parsing was successful, otherwise null.
+ */
 function parseDate(str) {
   // Try to parse a date range string, e.g. "14 January 2018 –"
   const match = str.match(/(\d{1,2} \w+ \d{4})/);
@@ -31,6 +46,15 @@ function parseDate(str) {
   return null;
 }
 
+/**
+ * Finds the names of leaders serving on a given date.
+ *
+ * @param {Date} date - The date to check for leadership.
+ * @param {Array} data - The chronology data array to search.
+ * @param {string} rangeKey - The key in each entry that contains the date range string.
+ * @param {string[]} nameKeys - The keys in each entry that may contain leader names.
+ * @returns {string[]} An array of unique leader names serving on the given date.
+ */
 function findLeadership(date, data, rangeKey, nameKeys) {
   // Find the last entry whose range includes the date
   for (let i = data.length - 1; i >= 0; i--) {
