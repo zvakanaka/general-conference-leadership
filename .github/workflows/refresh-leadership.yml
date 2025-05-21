@@ -29,6 +29,9 @@ jobs:
       - name: Run remove-duplicates task
         run: deno task remove-duplicates
 
+      - name: Run tests
+        run: deno task test
+
       - name: Remove raw JSON data
         run: rm -f data/first_presidency.json data/quorum_of_12.json
 
