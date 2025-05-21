@@ -9,15 +9,39 @@ Data of names of members of the First Presidency and Quorum of the 12 Apostles d
 
 ## Usage
 
+
 ### Importing the Data
+
+#### Deno / JSR
 
 You can import the JSON data in your Deno project:
 
 ```js
-import leadership from "jsr:@zvakanaka/general-conference-leadership"
-
-console.log(leadership)
+import leadership from "jsr:@zvakanaka/general-conference-leadership";
+console.log(leadership);
 ```
+
+#### Node.js (ESM)
+
+You can use this package in Node.js (v20+ recommended) with ESM syntax:
+
+```js
+import leadership from "@zvakanaka/general-conference-leadership";
+console.log(leadership[0]);
+```
+
+If you are using TypeScript, types will be picked up automatically if your tooling supports JSR/deno-style packages.
+
+#### Node.js (CommonJS)
+
+For CommonJS, you can import the JSON data directly:
+
+```js
+const leadership = require("@zvakanaka/general-conference-leadership/data/derived/general-conference-leadership.json");
+console.log(leadership[0]);
+```
+
+Note: TypeScript types are only available when using ESM import with supported tooling.
 
 ### Data Structure
 
@@ -57,6 +81,15 @@ Each item in the data array represents a General Conference and the leaders serv
 - `firstPresidency`: Array of names in the First Presidency at that conference.
 - `quorumOf12`: Array of names in the Quorum of the Twelve Apostles at that conference.
 
+
+<details>
+<summary><strong>Developing</strong></summary>
+
+
+## Automated Updates
+
+A GitHub Actions workflow runs every April 15 and October 15 to refresh, derive & clean the data, bump the version, and commit changes.
+
 ### Refreshing Data
 
 To update the data from Wikipedia:
@@ -64,6 +97,8 @@ To update the data from Wikipedia:
 ```sh
 deno task refresh
 ```
+
+### Deriving Leadership Data
 
 To derive the General Conference leadership data:
 
@@ -87,6 +122,4 @@ Removes any duplicate names within the `firstPresidency` and `quorumOf12` lists 
 deno task remove-duplicates
 ```
 
-## Automated Updates
-
-A GitHub Actions workflow runs every April 15 and October 15 to refresh and derive the data, bump the version, and commit changes.
+</details>
