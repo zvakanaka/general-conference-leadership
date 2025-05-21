@@ -7,7 +7,19 @@ Data of names of members of the First Presidency and Quorum of the 12 Apostles d
 - **Up-to-date JSON data** for the names of the members of the First Presidency and Quorum of the Twelve, during each General Conference since April, 1971.
 - **GitHub Actions workflow** for scheduled updates after every conference.
 
-## Example Data
+## Usage
+
+### Importing the Data
+
+You can import the JSON data in your Deno project:
+
+```js
+import leadership from "jsr:@zvakanaka/general-conference-leadership"
+
+console.log(leadership)
+```
+
+### Data Structure
 
 Each item in the data array represents a General Conference and the leaders serving at that time:
 
@@ -45,17 +57,6 @@ Each item in the data array represents a General Conference and the leaders serv
 - `firstPresidency`: Array of names in the First Presidency at that conference.
 - `quorumOf12`: Array of names in the Quorum of the Twelve Apostles at that conference.
 
-## Usage
-### Importing the Data
-
-You can import the JSON data in your Deno project:
-
-```js
-import leadership from "jsr:@zvakanaka/general-conference-leadership"
-
-console.log(leadership)
-```
-
 ### Refreshing Data
 
 To update the data from Wikipedia:
@@ -68,6 +69,22 @@ To derive the General Conference leadership data:
 
 ```sh
 deno task derive
+```
+
+### Cleaning Names
+
+Removes suffixes and extra information from names in the data (such as roles, notes, or parentheticals), so that only the names remain in the lists.
+
+```sh
+deno task clean-names
+```
+
+### Removing Duplicates
+
+Removes any duplicate names within the `firstPresidency` and `quorumOf12` lists for each conference in the data.
+
+```sh
+deno task remove-duplicates
 ```
 
 ## Automated Updates
